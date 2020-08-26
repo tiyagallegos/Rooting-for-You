@@ -2,12 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-image: url("https://images.pexels.com/photos/572487/pexels-photo-572487.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    color:whitesmoke;
-    font-weight: 400;
-  }
+}
   
 main {
     flex: 1 0 auto;
