@@ -13,11 +13,6 @@ footer {
     text-align: right;
   }
 
-.card {
-      background-color: yellowgreen;
-      color: rgb(60, 198, 184);
-      font-weight: 600;
-  }
   .card-title {
       text-align: center;
       font-weight: 900;

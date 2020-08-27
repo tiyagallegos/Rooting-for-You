@@ -4,6 +4,8 @@ from django.db import models
 class Plant(models.Model):
     sci_name = models.CharField(max_length=100)
     common_name = models.CharField(max_length=100)
+    genus = models.CharField(max_length=100)
+    description = models.TextField(max_length=250)
     water = models.TextField(max_length=250)
     sun = models.TextField(max_length=250)
     food = models.TextField(max_length=250)
