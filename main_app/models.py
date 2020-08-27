@@ -8,8 +8,8 @@ class Plant(models.Model):
     sun = models.TextField(max_length=250)
     food = models.TextField(max_length=250)
     toxicity = models.CharField(max_length=100)
-    age = models.ImageField()
+    age = models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return self.common_name
 
