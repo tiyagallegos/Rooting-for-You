@@ -26,14 +26,15 @@ class PlantCreate(CreateView):
 class PlantUpdate(UpdateView):
     model = Plant
     fields = '__all__'
-
+    success_url = '/plants/'
+    
 class PlantDelete(DeleteView):
     model = Plant
     success_url = '/plants/'
 
 class PotList(ListView):
     model = Pot
-    
+
 class PotDetailView(DetailView):
     model = Pot
 

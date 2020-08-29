@@ -23,7 +23,7 @@ class Pot(models.Model):
     description = models.TextField(max_length=500)
     size = models.CharField(max_length=100)
     color = models.CharField(max_length=20)
-    locaation = models.TextField(max_length=250)
+    location = models.TextField(max_length=250)
 
     def __str__(self):
         return self.name
