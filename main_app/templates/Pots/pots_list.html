@@ -2,10 +2,10 @@
 
 {% block content %}
 <h1>Pot List</h1>
-
-{% for pot in pots %}
-<div class="card">
-    <a href="{% url 'pot_detail' pot.id %}">
+<ul>
+{% for pot in object_list %}
+<a href="{% url 'pots_detail' pot.id %}">
+    <div class="card">
         <div class="card-content">
             <span class="card-title">{{ pot.name }}</span>
                 <p>Color: {{ pot.color }}</p>
@@ -13,8 +13,12 @@
                 <p>size: {{ pot.size }}</p>
                 <p>location: {{ pot.location }}</p>
         </div>
+    </div>
     </a>
-</div>
+{% empty %}
+    <li>No Pots Yet</li>
+    {% endfor %}
+</ul>
 {% endblock %}
 
 

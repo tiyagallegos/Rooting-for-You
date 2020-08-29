@@ -29,4 +29,4 @@ class Pot(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'pot_id': pot.id})
+        return reverse('pots_detail', kwargs={'pk': self.id})

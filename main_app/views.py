@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Plant, Pot
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 def home(request):
@@ -30,13 +31,11 @@ class PlantDelete(DeleteView):
     model = Plant
     success_url = '/plants/'
 
-def pots_index(request):
-    pots = Pot.objects.all()
-    return render(request, 'pots/pot_index.html', {'pots': pots})
-
-def pots_detail(request, pot_id):
-    pot = Pot.objects.get(id=pot_id)
-    return render(request, 'pots/pot_detail.html', {'pot': pot})
+class PotList(ListView):
+    model = Pot
+    
+class PotDetailView(DetailView):
+    model = Pot
 
 class PotCreate(CreateView):
     model = Pot
