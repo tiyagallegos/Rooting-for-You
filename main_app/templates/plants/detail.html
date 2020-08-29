@@ -17,5 +17,9 @@
                 <p>Age: seedling/sprout</p>
             {% endif %}
         </div>
+        <div class="card-action">
+            <a href="{% url 'plants_update' plant.id %}">Edit Plant</a>
+            <a href="{% url 'plants_delete' plant.id %}">Delete Plant</a>
+        </div>
 </div>
 {% endblock %}

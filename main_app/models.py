@@ -15,3 +15,18 @@ class Plant(models.Model):
     def __str__(self):
         return self.common_name
 
+    def get_absolute_url(self): 
+        return reverse('detail', kwargs={'plant_id': plant.id})
+
+class Pot(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
+    size = models.CharField(max_length=100)
+    color = models.CharField(max_length=20)
+    locaation = models.TextField(max_length=250)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'pot_id': pot.id})
