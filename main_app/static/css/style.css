@@ -71,3 +71,11 @@ nav {
   background-color:whitesmoke !important;
   text-shadow: none;
 }
+
+table {
+  background-color: whitesmoke;
+  padding: 10px;
+  margin: 15px;
+  text-shadow: none;
+  color: rgb(19, 87, 19);
+}

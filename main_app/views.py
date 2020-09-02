@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Plant, Pot
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from .forms import FeedingForm, WateringForm
 
 # Create your views here.
 def home(request):
@@ -16,7 +17,9 @@ def plants_index(request):
 
 def plants_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
-    return render(request, 'plants/detail.html', {'plant': plant})
+    feeding_form = FeedingForm()
+    watering_form = WateringForm()
+    return render(request, 'plants/detail.html', {'plant': plant, 'feeding_form': feeding_form, 'watering_form': watering_form})
 
 class PlantCreate(CreateView):
     model = Plant

@@ -44,22 +44,22 @@ class Pot(models.Model):
         return reverse('pots_detail', kwargs={'pk': self.id})
 
 class Watering(models.Model):
-    date = models.DateField()
+    date = models.DateField('watering date')
     volume = models.CharField(max_length=15)
     watering = models.CharField(max_length=1, choices=WATERINGS, default=WATERINGS[0][0])
     
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.get_water_display()} on {self.date}"
+        return f"{self.get_watering_display()} on {self.date}"
     
     class Meta: 
         ordering = ['-date']
 
 class Feeding(models.Model):
-    date = models.DateField()
+    date = models.DateField('feeding date')
     volume = models.CharField(max_length=15)
-    feeding = models.CharField(max_length=1, choices=FEEDINGS, default=FEEDINGS[0][0])
+    feeding = models.CharField(verbose_name='feeding type', max_length=1, choices=FEEDINGS, default=FEEDINGS[0][0])
     
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
 
