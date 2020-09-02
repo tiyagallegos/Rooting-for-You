@@ -1,8 +1,3 @@
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
   
 main {
     flex: 1 0 auto;
@@ -16,4 +11,63 @@ footer {
   .card-title {
       text-align: center;
       font-weight: 900;
-  }
+      color: rgb(19, 87, 19);
+}
+
+.card-title:hover {
+  text-align: center;
+  font-weight: 900;
+  font-size: 35px !important;
+  color: rgb(19, 87, 19);
+}
+
+.card-content {
+    color: rgb(19, 87, 19);
+    text-decoration: none;
+    background-color: whitesmoke;
+    text-shadow: none;
+}
+.card-content:hover {
+    color: rgb(19, 87, 19);
+    text-decoration: none;
+    background-color:rgb(202, 208, 206);
+    box-shadow: 5px 5px 2px rgb(232, 237, 235);
+    font:bolder;
+}
+
+body {
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 6px #000000 !important;
+    display: flex;
+    flex-grow: 1;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    background:radial-gradient(circle, rgb(16, 159, 92), rgb(30, 253, 82), rgb(202, 248, 159));
+    background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/plants1-1551895073.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+form {
+  background-color: whitesmoke;
+  box-shadow: 5px 5px 2px rgb(232, 237, 235);
+  padding: 10px;
+  margin: 15px;
+  text-shadow: none;
+}
+.right {
+  background-color: rgb(218, 149, 149);
+  text-decoration: none;
+}
+nav {
+  background-color: rgb(218, 149, 149) !important;
+}
+.page-footer {
+  background-color: rgb(218, 149, 149) !important;
+}
+.card-action {
+  background-color:whitesmoke !important;
+  text-shadow: none;
+}

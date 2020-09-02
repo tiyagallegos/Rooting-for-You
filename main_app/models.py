@@ -1,5 +1,17 @@
 from django.db import models
+from django.urls import reverse
 
+WATERINGS = (
+    ('M', 'Morning Water'),
+    ('A', 'Afternoon Water'),
+    ('E', 'Evening Water'),
+)
+
+FEEDINGS = (
+    ('C', 'Compost Tea'),
+    ('F', 'Fertilizer'),
+    ('S', 'New Soil')
+)
 # Create your models here.
 class Plant(models.Model):
     sci_name = models.CharField(max_length=100)
@@ -30,3 +42,29 @@ class Pot(models.Model):
 
     def get_absolute_url(self):
         return reverse('pots_detail', kwargs={'pk': self.id})
+
+class Watering(models.Model):
+    date = models.DateField()
+    volume = models.CharField(max_length=15)
+    watering = models.CharField(max_length=1, choices=WATERINGS, default=WATERINGS[0][0])
+    
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.get_water_display()} on {self.date}"
+    
+    class Meta: 
+        ordering = ['-date']
+
+class Feeding(models.Model):
+    date = models.DateField()
+    volume = models.CharField(max_length=15)
+    feeding = models.CharField(max_length=1, choices=FEEDINGS, default=FEEDINGS[0][0])
+    
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.get_feeding_display()} on {self.date}"
+    
+    class Meta: 
+        ordering = ['-date']
