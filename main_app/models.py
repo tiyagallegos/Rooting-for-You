@@ -25,7 +25,7 @@ class Pot(models.Model):
 
     def get_absolute_url(self):
         return reverse('pots_detail', kwargs={'pk': self.id})
-        
+
 class Plant(models.Model):
     sci_name = models.CharField(max_length=100)
     common_name = models.CharField(max_length=100)
@@ -43,6 +43,12 @@ class Plant(models.Model):
 
     def get_absolute_url(self): 
         return reverse('detail', kwargs={'plant_id': plant.id})
+
+    #def fed_for_the_month(self):
+    #    return self.feeding_set.filter(date=date.today()).count() >= 1
+
+    #def watered_for_week(self):
+    #    return self.watering_set.filter(date=date.today()).count() >= 1
 
 class Watering(models.Model):
     date = models.DateField('watering date')

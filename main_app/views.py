@@ -19,7 +19,6 @@ def plants_index(request):
 def plants_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
     pots_plant_doesnt_have = Pot.objects.exclude(id__in = plant.pots.all().values_list('id'))
-    print(pots_plant_doesnt_have)
     feeding_form = FeedingForm()
     watering_form = WateringForm()
     return render(request, 'plants/detail.html', {'plant': plant, 'feeding_form': feeding_form, 'watering_form': watering_form, 'pots': pots_plant_doesnt_have})
