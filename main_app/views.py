@@ -3,6 +3,7 @@ from .models import Plant, Pot
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .forms import FeedingForm, WateringForm
+from django.shortcuts import render, redirect
 
 # Create your views here.
 def home(request):
@@ -17,9 +18,36 @@ def plants_index(request):
 
 def plants_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
+    pots_plant_doesnt_have = Pot.objects.exclude(id__in = plant.pots.all().values_list('id'))
+    print(pots_plant_doesnt_have)
     feeding_form = FeedingForm()
     watering_form = WateringForm()
-    return render(request, 'plants/detail.html', {'plant': plant, 'feeding_form': feeding_form, 'watering_form': watering_form})
+    return render(request, 'plants/detail.html', {'plant': plant, 'feeding_form': feeding_form, 'watering_form': watering_form, 'pots': pots_plant_doesnt_have})
+
+def add_feeding(request, plant_id):
+    form = FeedingForm(request.POST)
+    if form.is_valid(): 
+        new_feeding = form.save(commit=False)
+        new_feeding.plant_id = plant_id
+        new_feeding.save()
+    return redirect('detail', plant_id=plant_id)
+
+
+def add_watering(request, plant_id):
+    form = WateringForm(request.POST)
+    if form.is_valid(): 
+        new_watering = form.save(commit=False)
+        new_watering.plant_id = plant_id
+        new_watering.save()
+    return redirect('detail', plant_id=plant_id)
+
+def assoc_pot(request, plant_id, pot_id):
+    Plant.objects.get(id=plant_id).pots.add(pot_id)
+    return redirect('detail', plant_id=plant_id)
+
+def unassoc_pot(request, plant_id, pot_id):
+    Plant.objects.get(id=plant_id).pots.remove(pot_id)
+    return redirect('detail', plant_id=plant_id)
 
 class PlantCreate(CreateView):
     model = Plant
