@@ -84,3 +84,109 @@ table {
   color: black;
 
 }
+
+
+.about {
+  background-color: whitesmoke;
+  color: black;
+  font-size: 50px;
+  text-shadow: 2px .5px .5px;
+  text-shadow: rgb(80, 70, 70);
+  padding: 20px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.circles:hover {
+  box-shadow: 0 8px 16px 0 rgba(191, 75, 75, 0.2);
+  padding: green;
+  padding: 40px;
+  background-color: white;
+}
+
+
+
+.circles {
+  border-radius: 15%;
+  width: 500px;
+  height: auto;
+  padding: 5px;
+  background: rgb(184, 184, 184);
+  box-shadow: blanchedalmond;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  text-shadow: none;
+}
+
+img {
+  border-radius: 15%;
+
+  padding: 20px;
+  background: whitesmoke;
+  box-shadow: blanchedalmond;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  text-shadow: none;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  border-radius: 15%;
+  width: 500px;
+  height: auto;
+  padding: 20px;
+  background: whitesmoke;
+  box-shadow: blanchedalmond;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  text-shadow: none;
+  position: absolute;
+
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  border-radius: 15%;
+  width: 500px;
+  height: auto;
+  padding: 10px;
+  background: whitesmoke;
+  box-shadow: blanchedalmond;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  text-shadow: none;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background:radial-gradient(circle, rgb(16, 159, 92), rgb(30, 253, 82), rgb(202, 248, 159));
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/*.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-items: center;
+} */
