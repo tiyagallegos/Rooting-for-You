@@ -14,7 +14,17 @@ FEEDINGS = (
     ('F', 'Fertilizer'),
     ('S', 'New Soil')
 )
+
+
 # Create your models here.
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for cat_id: {self.cat_id} @{self.url}"
+
 class Pot(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500)

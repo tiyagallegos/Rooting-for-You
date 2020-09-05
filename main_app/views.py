@@ -1,9 +1,30 @@
 from django.shortcuts import render
-from .models import Plant, Pot
+from .models import Plant, Pot, Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .forms import FeedingForm, WateringForm
 from django.shortcuts import render, redirect
+import uuid
+import boto3
+from botocore.exceptions import ClientError
+
+S3_BASE_URL = "https://rootingforyou.s3.amazonaws.com/"
+BUCKET = "rootingforyou"
+
+def add_photo(request, plant_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file: 
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try: 
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{key}"
+            photo = Photo(url=url, plant_id=plant_id)
+            photo.save()
+        except ClientError as e: 
+            logging.error(e)
+            print(e)
+    return redirect('detail', plant_id=plant_id)
 
 # Create your views here.
 def home(request):
