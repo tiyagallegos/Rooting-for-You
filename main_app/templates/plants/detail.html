@@ -43,11 +43,11 @@
         <input type="submit" class="btn" value="Add Feeding">
     </form>
     <br>
-    <!----{% if plant.fed_for_month %}
-      <div class="card-panel teal-text center-align">{{plant.name}} has been fertilized for the month</div>
+    {% if plant.fed_for_month %}
+      <div class="card-panel teal-text center-align">{{plant.common_name}} has been fertilized for the month</div>
     {% else %}
-      <div class="card-panel red-text center-align">{{plant.name}} might need to be fertilized</div>
-    {% endif %} -->
+      <div class="card-panel red-text center-align">{{plant.common_name}} might need to be fertilized</div>
+    {% endif %}
     <table class="stripend">
         <h4>Feedings:</h4>
         <thead>
@@ -72,10 +72,11 @@
         <input type="submit" class="btn" value="Add Watering">
     </form>
     <br>
-    <!-----{% if plant.watered_for_week %}
-      <div class="card-panel teal-text center-align">{{plant.name}} has been watered for the week</div>
+    
+    {% if plant.watered_for_week %}
+      <div class="card-panel teal-text center-align">{{plant.common_name}} has been watered for the week</div>
     {% else %}
-      <div class="card-panel red-text center-align">{{plant.name}} might need water</div>
+      <div class="card-panel red-text center-align">{{plant.common_name}} might need water</div>
     {% endif %} --->
     <table class="stripend">
         <h4>Waterings:</h4>

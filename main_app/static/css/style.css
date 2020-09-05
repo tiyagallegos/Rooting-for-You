@@ -79,3 +79,8 @@ table {
   text-shadow: none;
   color: rgb(19, 87, 19);
 }
+.card-panel {
+  text-shadow: none;
+  color: black;
+
+}

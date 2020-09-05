@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from datetime import date
+import datetime
 from django.contrib.auth.models import User
 
 WATERINGS = (
@@ -52,9 +53,23 @@ class Plant(models.Model):
     def get_absolute_url(self): 
         return reverse('detail', kwargs={'plant_id': self.id})
 
-    def fed_for_today(self):
-        return self.feeding_set.filter(date=date.today()).count() >= len(FEEDINGS)
+    def fed_for_month(self):
+        start_date = datetime.datetime.now() - datetime.timedelta(days=30)
+        start_date = start_date.date()
+        feedings = self.feeding_set.all()
+        print(feedings[0].date, start_date)
+        return feedings[0].date > start_date
+    
+    def watered_for_week(self):
+        start_date = datetime.datetime.now() - datetime.timedelta(days=7)
+        start_date = start_date.date()
+        waterings = self.watering_set.all()
+        print(waterings[0].date, start_date)
+        return waterings[0].date > start_date
 
+
+
+        
 class Photo(models.Model):
     url = models.CharField(max_length=200)
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
