@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
+from django.contrib.auth.models import User
 
 WATERINGS = (
     ('M', 'Morning Water'),
@@ -19,6 +21,7 @@ class Pot(models.Model):
     size = models.CharField(max_length=100)
     color = models.CharField(max_length=20)
     location = models.TextField(max_length=250)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -37,6 +40,7 @@ class Plant(models.Model):
     toxicity = models.CharField(max_length=100)
     age = models.IntegerField()
     pots = models.ManyToManyField(Pot)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.common_name
