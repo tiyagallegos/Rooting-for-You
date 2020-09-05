@@ -17,21 +17,18 @@
                     <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Rooting For You</a></li>
                 </ul>
                 <ul class="right">
-                    <li>
-                        <a href="{% url 'about' %}">About</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'plants_create' %}">Add a Plant</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'index' %}">View All Plants</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'pots_create' %}">Add a Pot</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'pots_list' %}">View All Pots</a>
-                    </li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'plants_create' %}">Add a Plant</a></li>
+                    <li><a href="{% url 'index' %}">View All Plants</a></li>
+                    <li><a href="{% url 'pots_create' %}">Add a Pot</a></li>
+                    <li><a href="{% url 'pots_list' %}">View All Pots</a></li>
+                    <li>Welcome, <strong>{{user.username}}</strong>!</li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    {% else %}
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

@@ -50,7 +50,10 @@ class Plant(models.Model):
         return self.common_name
 
     def get_absolute_url(self): 
-        return reverse('detail', kwargs={'plant_id': plant.id})
+        return reverse('detail', kwargs={'plant_id': self.id})
+
+    def fed_for_today(self):
+        return self.feeding_set.filter(date=date.today()).count() >= len(FEEDINGS)
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
