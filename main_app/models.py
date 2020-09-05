@@ -18,12 +18,6 @@ FEEDINGS = (
 
 # Create your models here.
 
-class Photo(models.Model):
-    url = models.CharField(max_length=200)
-    cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"Photo for cat_id: {self.cat_id} @{self.url}"
 
 class Pot(models.Model):
     name = models.CharField(max_length=100)
@@ -58,6 +52,12 @@ class Plant(models.Model):
     def get_absolute_url(self): 
         return reverse('detail', kwargs={'plant_id': plant.id})
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for plant_id: {self.plant_id} @{self.url}"
     #def fed_for_the_month(self):
     #    return self.feeding_set.filter(date=date.today()).count() >= 1
 

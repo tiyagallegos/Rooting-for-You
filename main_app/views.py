@@ -7,6 +7,10 @@ from django.shortcuts import render, redirect
 import uuid
 import boto3
 from botocore.exceptions import ClientError
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 S3_BASE_URL = "https://rootingforyou.s3.amazonaws.com/"
 BUCKET = "rootingforyou"
@@ -21,8 +25,7 @@ def add_photo(request, plant_id):
             url = f"{S3_BASE_URL}{key}"
             photo = Photo(url=url, plant_id=plant_id)
             photo.save()
-        except ClientError as e: 
-            logging.error(e)
+        except ClientError as e:
             print(e)
     return redirect('detail', plant_id=plant_id)
 

@@ -15,6 +15,8 @@ urlpatterns = [
     path('plants/<int:plant_id>/unassoc_pot/<int:pot_id>/', views.unassoc_pot, name='unassoc_pot'),
     path('plants/<int:plant_id>/add_photo/', views.add_photo, name='add_photo'),
 
+    path('accounts/signup', views.signup, name='signup'),
+
     path('pots/', views.PotList.as_view(), name='pots_list'),
     path('pots/<int:pk>/', views.PotDetailView.as_view(), name='pots_detail'),
     path('pots/create/', views.PotCreate.as_view(), name='pots_create'),
