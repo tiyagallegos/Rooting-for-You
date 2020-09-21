@@ -57,14 +57,12 @@ class Plant(models.Model):
         start_date = datetime.datetime.now() - datetime.timedelta(days=30)
         start_date = start_date.date()
         feedings = self.feeding_set.all()
-        print(feedings[0].date, start_date)
         return feedings[0].date > start_date
     
     def watered_for_week(self):
         start_date = datetime.datetime.now() - datetime.timedelta(days=7)
         start_date = start_date.date()
         waterings = self.watering_set.all()
-        print(waterings[0].date, start_date)
         return waterings[0].date > start_date
 
 
