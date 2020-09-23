@@ -66,6 +66,8 @@ def plants_detail(request, plant_id):
     print(pots_plant_doesnt_have)
     feeding_form = FeedingForm()
     watering_form = WateringForm()
+    print(plant.fed_for_month())
+    print(plant.watered_for_week())
     return render(request, 'plants/detail.html', {'plant': plant, 'feeding_form': feeding_form, 'watering_form': watering_form, 'pots': pots_plant_doesnt_have})
 
 @login_required

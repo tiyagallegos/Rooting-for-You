@@ -6,6 +6,8 @@ main {
 footer {
     padding-top: 0;
     text-align: right;
+    height: 90px;
+    font-size: 2rem;
   }
 
   .card-title {
@@ -43,9 +45,9 @@ body {
     min-height: 100vh;
     width: 100%;
     flex-direction: column;
-    background:radial-gradient(circle, rgb(16, 159, 92), rgb(30, 253, 82), rgb(202, 248, 159));
+    background: rgb(204, 241, 186);
     background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/plants1-1551895073.png");
-    background-size: cover;
+    background-size: 100rem;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -117,19 +119,13 @@ table {
 }
 
 img {
-  border-radius: 15%;
-
-  padding: 20px;
-  background: whitesmoke;
-  box-shadow: blanchedalmond;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  text-shadow: none;
+ 
 }
 
 .flip-card {
   background-color: transparent;
   width: 300px;
-  height: 200px;
+  height: 300px;
   border: 1px solid #f1f1f1;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
@@ -179,8 +175,10 @@ img {
 
 /* Style the back side */
 .flip-card-back {
-  background:radial-gradient(circle, rgb(16, 159, 92), rgb(30, 253, 82), rgb(202, 248, 159));
+  text-decoration: ;
+  background:rgb(229, 160, 172);
   color: white;
+  font-weight: 900;
   transform: rotateY(180deg);
 }
 
@@ -190,3 +188,13 @@ img {
   align-content: center;
   justify-items: center;
 } */
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.zo {
+
+}
